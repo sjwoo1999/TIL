@@ -140,3 +140,212 @@
 <h3>Figure 2.8 TCP/IP and OSI model</h3>
 
 ![alt text](image-8.png)
+
+![alt text](image-9.png)
+
+- OSI Model
+    - Physical Layer
+        - 비트 표현 전송
+    - Data Link Layer
+        - Bit 모아서 Frame 생성
+        - Flow Control
+        - Error Control
+        - Access Control
+    - Network Layer
+        - 길 찾기
+        - 주소 갖고 다음 Hop으로 넘겨주기
+    - Transport Layer
+        - Data 쪼개서 보낼 수 있도록
+        - 받은 데이터 합치기
+        - Flow Control
+        - Error Control
+    - Session
+        - Session 유지되도록
+    - Presentation
+        - Data 표현
+    - Application
+        - 프로그램 설치 등
+    
+<h3>Figure 2.9 A private internet</h3>
+
+- 데이터 전송 과정
+- Layer 무슨 일 어떻게 진행
+- internet
+    - Network와 Network의 연결
+- We assume that we want to use the TCP/IP suite in a small, private internet.
+
+<h3>Figure 2.10 Communication at the physical layer</h3>
+
+![alt text](image-10.png)
+
+- Link
+    - A와 R1이 Data 전송할 수 있는 통로
+- 경로(과정)는 정해져있다고 가정하자. 길 찾는 건 뒤에서.
+- The unit of communication at the physical layer is a "bit".
+
+<h3>Figure 2.11 Communication at the data link layer</h3>
+
+![alt text](image-11.png)
+
+- Data Link Layer
+    - Header
+        - 하는 일에 대한 정보
+- The unit of communication at the data link layer is a "frame".
+
+<h3>Figure 2.12 Communication at the network layer</h3>
+
+![alt text](image-12.png)
+
+- 어디로 전송하면 되는 거야 .. 확인할 수 있는 정보는 Network Layer
+- Network Layer에 도착해야 주소를 확인할 수 있다
+- 주소를 확인해야 다음 어디로 갈 수 있는지를 확인할 수 있다.
+- The unit of communication at the network layer is a "datagram".
+
+<h3>Figure 2.13 Communication at the transport layer</h3>
+
+![alt text](image-13.png)
+
+- A와 B 관점에서는 Transport가 연결된 것처럼 보인다.
+- 나머지는 Trasnport가 없기 때문.
+- A와 B의 Transport : 자기네들끼리 연결된 것처럼 느낄 수 있다. 실제로는 아니지만.
+- The unit of communication at the transport layer is a "segment", user "datagram", or a "packet", depending on the specific protocol used in this layer.
+
+<h3>Figure 2.14 Communication at the application layer</h3>
+
+![alt text](image-14.png)
+
+- Transport X / Application X
+- The unit of communication at the application layer is a "message".
+
+<h3>TCP/IP Protocol Suite and OSI Model</h3>
+
+![alt text](image-15.png)
+
+- Network
+    - IP (Internet Protocol)
+        - 잘 도착했는지? 잘 도착하지 않았는지?
+    - IP가 못하는 것 ..
+        - ICMP, IGMP, ARP가 도와줌
+        - Network Layer 길 찾는 곳에 관심
+- Presentation
+    - FTP : 파일 다운
+    - HTTP : 인터넷 주소 체계
+    - DNS : 차후에 ..
+
+<h3>TCP/IP Protocol Suite and OSI Model</h3>
+
+- TCP/IP Protocol
+    - Physical and Data Link Layer
+        - It supports all of standard and proprietary protocols.
+    - Network Layer
+        - IP : a best-effort delivery service.
+            - 가장 좋게 보낸다.
+            - 통로 .. 주어진 환경에 따라 보낼 수 있는 양 달라짐.
+
+                ![alt text](image-16.png)        
+        - ARP and RARP
+        - ICMP (Internet Control Message Protocol)
+        - IGMP (Internet Group Message Protocol)
+    - Transport Layer
+        - UDP (User Datagram Protocol)
+        - TCP (Transmission Control Protocol)
+        - SCTP (Stream Control Transmission Protocol)
+    - Application Layer
+        - It is equivalent to combined session, presentation and application layers in the OSI model.
+
+<h3>2.4 Addressing</h3>
+
+- Four levels of addresses are used in an internet employing the TCP/IP protocols:
+    - physical address
+        - Data Link Layer
+        - 어떻게 찾아갈 거냐?
+    - logical address
+        - IP
+        - Network Layer
+    - port address
+        - Transport Layer
+    - applicatoin-specific address
+        - Application
+
+<h3>Figure 2.15 Address in TCP/IP protocol suite</h3>
+
+![alt text](image-17.png)
+
+<h3>Figure 2.16 Example 2.3: physical addresses</h3>
+
+![alt text](image-18.png)
+
+- LAN
+    - Local Area Network
+- 내가 아니네? 데이터 무시 ...
+- Physical Layer -> 확인불가
+    - 왜? Bit가 전송되므로
+- Data Link Layer -> 확인 가능
+    - 왜? frame이라고 했으므로
+    - frame 안에 Destination, Source 주소들이 존재
+- 주소 확인은 Network Layer에서 한다고 했는데, 뭐가 이상하지 않나?
+    - Data Link Layer
+    - Source Address ..
+    - 두 개 주소 다르다 ..
+    - Data Link Layer에서 주소는 .. Physical Address (물리 주소) PC 고유번호..
+    - 87이 Receiver의 Physical Address라는 걸 알게 됨
+    - ARP 프로토콜 사용해서 .. 너의 Physical Address는 뭐니?
+    - 이때 보내는 Physical Address 주소 알게 됨
+
+<h3>Example 2.4</h3>
+
+- Most local area networks use a 48-bit (6 bytes) physical address written as 12 hexadecimal digits; every byte (2 hexadecimal digits) is seperated by a clon, as shown below:
+
+![alt text](image-19.png)
+
+<h3>Figure 2.17 Example 2.5: logical addresses <- Network Layer</h3>
+
+![alt text](image-20.png)
+
+- 20 / 10 / A / P / Data
+
+- frame / Datagram
+
+- Logical Address / Physical Address
+
+- Router
+    - Physical 주소 2개
+    - Logical 주소 2개
+    - 다른 Network와도 연결된다면 더욱 증가할 것
+
+- 95/66
+    - 동네에서 누가 나에게 보냈는지
+- A/P
+    - 다른 동네 누가 나에게 보냈는지 ..
+
+- Network는 하나의 방이라고 생각할 수 있다.
+    - 나중에 IP 배울 때 더욱 자세히 ..
+
+- Frame을 받아서 Physical Adderss를 붙여서 전달한다 .. 전달하려면 붙여야만 한다
+    - 이건 다시 체크해봐야 할 듯?
+
+- The physical addresses will change from hop to hop, but the logical addresses remain the same.
+- 같은 동네에서 어떠한 녀석이 나에게 보냈는지에 관심이 있음
+- Logical addresses
+    - 누가 나에게 보냈냐
+- Logical Address는 변화 X
+- Physical Address는 다른 동네로 가면서 변화
+    - 동네 : 다 들을 수 있는 .. 내 것인지 아닌지
+- 다른 동네로 가면 Physical address 바뀐다
+- Router
+    - 양쪽 동네 다 들을 수 있음
+    - 주소가 2개
+
+<h3>Figure 2.18 Example 2.6: port numbers <- Transport Layer</h3>
+
+- 프로그램 설치 -> 인식할 수 있는 port가 존재
+- Physical Address/Logical Address => Destination Node => Port Address(내 컴퓨터 안에 있는 특정 Port의 Adddress)
+- The physical addresses change from hop to hop, but the logical and port addresses usually remain the same.
+
+<h3>Application-Specific Address</h3>
+
+- Some applications have user-friendly addresses that are designed for that specific application.
+- Examples of Application-Specific Address
+    - E-mail
+    - URL(Universal Resource Locator)
+- These addresses get changed to the corresponding port and logical addresses by the sending computer.
